@@ -95,7 +95,7 @@ def addNewLight(modelid: str, name: str, protocol: str, protocol_cfg: Dict) -> U
         Union[int, bool]: The ID of the new light or False if the model ID is not found.
     """
     newLightID = nextFreeId(bridgeConfig, "lights")
-    if modelid in lightTypes:
+    if modelid in lightTypes and protocol != "mqtt":
         light = lightTypes[modelid]
         light.update({
             "name": name,
